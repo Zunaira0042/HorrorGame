@@ -7,7 +7,7 @@ namespace AdvancedHorrorFPS
     {
         public static HeroPlayerScript Instance;
         public GameObject LadderPointInCamera;
-       public FirstPersonController firstPersonController;
+        public FirstPersonController firstPersonController;
         public CharacterController characterController;
         public Transform DemonComingPoint;
         public int Health = 100;
@@ -18,6 +18,7 @@ namespace AdvancedHorrorFPS
         public FlashLightScript FlashLight;
         public bool isHoldingBox = false;
         public Transform HoldingItemPoint; // Added
+        public bool isInvincible = false;
 
 
         void Start()
@@ -63,6 +64,11 @@ namespace AdvancedHorrorFPS
             Health = Health + 50;
             if (Health > 100) Health = 100;
             GameCanvas.Instance.UpdateHealth();
+        }
+
+        public void CheckMovement(bool value)
+        {
+            firstPersonController.ChangeSpeed(value);
         }
 
         public void ActivatePlayer()
